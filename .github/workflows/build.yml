@@ -1,5 +1,5 @@
 
-name: Dependencies Example
+name: Build Example
 
 on:
   push:
@@ -16,9 +16,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
+          
       - name: Dependencies install
         run: npm install
 
+      - name: Build the code 
+        run: zip -r calculator.zip . node_modules
+        
       - name: Controle
         run: ls -alhR

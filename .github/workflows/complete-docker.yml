@@ -1,0 +1,29 @@
+name: Complete Example
+
+on:
+  push:
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Node install
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          
+      - name: Dependencies install
+        run: npm install
+
+      - name: Build the code 
+        run: zip -r calculator.zip .
+        
+      - name: Test the code
+        run: npm test
+        
+      - name: Controle
+        run: ls -alhR
